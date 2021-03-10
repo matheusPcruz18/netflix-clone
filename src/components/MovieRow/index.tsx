@@ -10,10 +10,20 @@ import MoreInfoModal from '../MoreInfoModal'
 export default function MovieRow({ title, items }) {
   const [showInfo, setShowInfo] = useState(false)
   const [scrollX, setScrollX] = useState(0)
+  const [movieId, setMovieId] = useState('')
+  const [information, setInformation] = useState(null)
   const listWidth = items.results.length * 325
   
-  const showMoreInfo = () => {
+  const getId = (key, item) => {
+    setMovieId(items.results[key].id)
     setShowInfo(true)
+    setInformation(item)
+  }
+
+  const closeMoreInfo = () => {
+    if(showInfo){
+      setShowInfo(false)
+    }
   }
 
   const handleLeftArrow = () => {
@@ -51,13 +61,13 @@ export default function MovieRow({ title, items }) {
         >
             {items.results.length > 0 && items.results.map((item, key) => (
               <>
-                <div key={key} className="item" onClick={showMoreInfo}>
+                <div key={key} className="each" onClick={() => (getId(key, item))}>
                   <img src={`https://image.tmdb.org/t/p/w300${item.backdrop_path}`} alt={item.original_title} />
                 </div>
-                <MoreInfoModal id={item.id}/>
               </>
             )) }
           </div>
+        {showInfo && <MoreInfoModal id={movieId} info={information} close={closeMoreInfo} />}
         </ListArea>
       </Container>
     

@@ -60,7 +60,7 @@ export const ListArea = styled.div`
     
   }
 
-  .item{
+  .each{
     display: inline-block;
     width: 325px;
     margin-right: 5px;
