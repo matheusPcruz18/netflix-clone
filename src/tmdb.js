@@ -77,5 +77,11 @@ export default {
         }
 
         return info
+    },
+
+    getKey: async (id, type) => {
+        let videoInfo = await basicFetch(`http://api.themoviedb.org/3/${type}/${id}/videos?api_key=${API_KEY}`)
+
+        return videoInfo
     }
 }

@@ -5,10 +5,16 @@ import { Container, ListArea } from './style'
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
+import MoreInfoModal from '../MoreInfoModal'
+
 export default function MovieRow({ title, items }) {
   const [showInfo, setShowInfo] = useState(false)
   const [scrollX, setScrollX] = useState(0)
   const listWidth = items.results.length * 325
+  
+  const showMoreInfo = () => {
+    setShowInfo(true)
+  }
 
   const handleLeftArrow = () => {
     let x = scrollX + Math.round(window.innerWidth / 2)
@@ -28,27 +34,34 @@ export default function MovieRow({ title, items }) {
   }
 
   return (
-    <Container>
-      <h2>{title}</h2>
-    <div className="arrow-left" onClick={handleLeftArrow}>
-      <NavigateBeforeIcon style={{fontSize: 50}} />
-    </div>
-    
-    <div className="arrow-right" onClick={handleRightArrow}>
-      <NavigateNextIcon style={{fontSize: 50}} />
-    </div>
-    <ListArea>
-      <div 
-        className="list" 
-        style={{marginLeft: scrollX, width: listWidth}}
-      >
-          {items.results.length > 0 && items.results.map((item, key) => (
-            <div key={key} className="item">
-              <img src={`https://image.tmdb.org/t/p/w300${item.backdrop_path}`} alt={item.original_title} />
-            </div>
-          )) }
+    <>
+      <Container>
+        <h2>{title}</h2>
+        <div className="arrow-left" onClick={handleLeftArrow}>
+          <NavigateBeforeIcon style={{fontSize: 50}} />
         </div>
-      </ListArea>
-    </Container>
+        
+        <div className="arrow-right" onClick={handleRightArrow}>
+          <NavigateNextIcon style={{fontSize: 50}} />
+        </div>
+      <ListArea>
+        <div 
+          className="list" 
+          style={{marginLeft: scrollX, width: listWidth}}
+        >
+            {items.results.length > 0 && items.results.map((item, key) => (
+              <>
+                <div key={key} className="item" onClick={showMoreInfo}>
+                  <img src={`https://image.tmdb.org/t/p/w300${item.backdrop_path}`} alt={item.original_title} />
+                </div>
+                <MoreInfoModal id={item.id}/>
+              </>
+            )) }
+          </div>
+        </ListArea>
+      </Container>
+    
+    </>
+    
   )
 }
