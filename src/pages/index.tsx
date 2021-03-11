@@ -14,7 +14,6 @@ export default function Home() {
   const [movieList, setMovieList] = useState([])
   const [featuredData, setFeaturedData] = useState(null)
   const [blackHeader, setBlackHeader] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const loadAll = async () => {

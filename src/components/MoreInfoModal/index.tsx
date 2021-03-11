@@ -19,7 +19,6 @@ export default function MoreInfoModal({id, info, close}) {
 
     showKey()
   }, [])
-  //<iframe src={`https://www.youtube.com/watch?v=${key}`}/>
   return (
     <>
       <Overlay>
