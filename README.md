@@ -1,9 +1,7 @@
 
 <div align="center">
 
-<img src="public/netflix-logo.png" alt="test"
-    style="width: 150px"
-/>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1200px-Netflix_2015_logo.svg.png" alt="test" style="width: 130px; heigth: auto"/>
 
 </div>
 
@@ -16,7 +14,7 @@ Desenvolvido com auxilio do canal do professor [Bonieky Lacerda](https://www.you
 
 ## 📷 Veja
 
-<img src="public/readmeGif3.gif" alt="gif"/>
+<img src="public/gif.gif" alt="gif"/>
 
 ---
 
